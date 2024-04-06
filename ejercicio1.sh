@@ -1,41 +1,51 @@
 #! /bin/bash
 
 get_permissions_verbose() {
-    user="$(echo $permisos | cut -c 2-4)"
-    grupos="$(echo $permisos | cut -c 5-7)"
-    otros="$(echo $permisos | cut -c 8-10)"
+    permisosformatted=""
+    for (( i=1; i<=${#1}; i++ )); do
+        p=$(echo $1 | cut -c $i) # Extraer un permiso por ejecucion
+        
+        # Concatenar por cada case
+        case $p in 
+            "r")
+                permisosformatted="${permisosformatted}read"
+                ;;
+            "w")
+                permisosformatted="${permisosformatted},write"
+                ;;
+            "x")
+                permisosformatted="${permisosformatted},execute"
+                ;;
+        esac
+    done
+
+    if [ -z $permisosformatted ]; then
+        # Si esta vacia
+        permisosformatted="none"
+    fi
+
+    echo "$2:$permisosformatted"
 }
 
-if [ -z $1 ] || [ -z $2 ]; then
-    echo -e "Ingrese dos parametros\nFormato: ./ejercicio1.sh [nombreArchivo] [r|w|x]" >&2
+if [ -z $1 ]; then
+    echo -e "Ingrese dos parametros\nFormato: ./ejercicio1.sh [nombreArchivo]" >&2
     exit 1
 
 elif [ -e $1 ]; then
-    permisos="$(stat -c "%A%" $1)"
-    
-    get_permissions_verbose
-    
-    if [ $2 = "r" ]; then
-        echo "User: $(echo $user | cut -c 1)"
-        echo "Group: $(echo $grupos | cut -c 1)"
-        echo "Other: $(echo $otros | cut -c 1)"
-    
-    elif [ $2 = "w" ]; then
-        echo "User: $(echo $user | cut -c 2)"
-        echo "Group: $(echo $grupos | cut -c 2)"
-        echo "Other: $(echo $otros | cut -c 2)"
+    permisos="$(stat -c "%A%" $1)" # Obtener permisos
+    permisos=$(echo $permisos | cut -c2-) # Quitar el primer caracter
 
-    elif [ $2 = "x" ]; then
-        echo "User: $(echo $user | cut -c 3)"
-        echo "Group: $(echo $grupos | cut -c 3)"
-        echo "Other: $(echo $otros | cut -c 3)"
-    else
-        echo "Tipo de permiso no encontrado" >&2
-        exit 1
-    fi
+    # Cortar en permisos en trios
+    permisos_user=$(echo $permisos | cut -c 1-3)
+    permisos_group=$(echo $permisos | cut -c 4-6)
+    permisos_other=$(echo $permisos | cut -c 7-9)
+
+    # Llamar funciones
+    get_permissions_verbose $permisos_user "User"
+    get_permissions_verbose $permisos_group "Group"
+    get_permissions_verbose $permisos_other "Other"
 
 else
     echo "El archivo no existe" >&2
     exit 1
 fi
-
