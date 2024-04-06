@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -z $1 ] || [ -z $2 ]; then
-    echo "Formato: ./ejercicio2.sh [nombreUsuario] [nombreGrupo]"
+if [ -z $1 ] || [ -z $2 ]; then # Verificar que los parametros no esten vacios
+    echo "Formato: ./ejercicio2.sh [nombreUsuario] [nombreGrupo]" # Mensaje de ayuda
     exit 1
 else
     # Verificar la existencia del usuario que se pasa como parametro
@@ -24,5 +24,7 @@ else
 
     # Se cambian los permisos de ejecucion de ejercicio1.sh
     # para los miembros del grupo
+    sudo chgrp $2 ejercicio1.sh
+    chmod ugo-x ejercicio1.sh 
     chmod g+x ejercicio1.sh
 fi
