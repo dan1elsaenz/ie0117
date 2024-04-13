@@ -1,0 +1,11 @@
+[Unit]
+Description=Servicio de Monitoreo de Cambios en Directorios
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/dsaenz/Documentos/ProyectosVSCode/Laboratorio2/directory_monitor.sh
+WorkingDirectory=/home/dsaenz/Documentos/ProyectosVSCode/Laboratorio2/objetivo
+
+[Install]
+WantedBy=multi-user.target
