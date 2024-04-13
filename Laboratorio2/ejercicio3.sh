@@ -1,29 +1,33 @@
 #!/bin/bash
 
 is_process_running() {
-    ps -e -o pid | grep -q $1
+    ps -e -o pid | grep -q $1 # Verifica la ejecucion del proceso con grep -q [pid]
 }
 
-if [ ! -x $1 ] || [ -z $1 ]; then
-    echo "Formato: $0 [archivoEjecutable]"
+if [ ! -x $1 ] || [ -z $1 ]; then # No es ejecutable o esta vacio
+    echo "Formato: $0 [archivoEjecutable]" # Mensaje de ayuda
     exit 1
 fi
 
 # Ejecutar el script en bg
 ./$1 &
-process_id=$!
+process_id=$! # Obtener el ultimo pid ejecutado
 
 direccionArchivoLog="./CPU_memoria.txt"
 echo "" > $direccionArchivoLog # Borrar contenido previo
 
 while is_process_running $process_id; do 
+    # Obtener CPU y memoria mientras se ejecuta el proceso
     consumoCPU=$(ps -p "$process_id" -o "%cpu" --no-headers)
     consumoMemoria=$(ps -p "$process_id" -o "%mem" --no-headers)
 
+    # Guardar los datos en el archivo log
     echo "$(date '+%D %T')  $consumoCPU $consumoMemoria" >> $direccionArchivoLog
 
-    sleep 2
+    sleep 2 # Ejecucion cada 2 segundos
 done
+
+# Graficar los datos
 
 QT_QPA_PLATFORM=wayland
 gnuplot << EOF
