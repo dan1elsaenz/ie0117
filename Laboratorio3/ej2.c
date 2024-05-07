@@ -1,4 +1,17 @@
+/*
+ * Laboratorio 3 IE-0117
+ * Ejercicio 2
+ * Daniel Saenz Obando - C37099
+ */
+
+// Header utilizado
 #include <stdio.h>
+
+/*
+ * factorial() calcula el factorial de un numero entero n
+ * @param n Numero entero positivo
+ * @return i Resultado del factorial
+ */
 
 int factorial(int n) {
     int i = 1;
@@ -9,6 +22,13 @@ int factorial(int n) {
     }
     return i;
 }
+
+/*
+ * main() verifica el ingreso de un numero entero positivo
+ * y calcula su factorial
+ * 
+ * @return 0 si se ejecuto correctamente el codigo del programa
+ */
 
 int main() {
     int numeroFactorial = 0;
