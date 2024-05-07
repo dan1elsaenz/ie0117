@@ -1,10 +1,28 @@
+/*
+ * Laboratorio 3 IE-0117
+ * Ejercicio 3
+ * Daniel Saenz Obando - C37099
+ */
+
+// Headers utilizados
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 #define TAMANO_PREDETERMINADO 5
 
+/*
+ * Variable global para almacenar el tamano de la matriz y facilitar 
+ * el paso de la matriz como argumento y su manipulacion
+ */
 int tamano = 0;
+
+/*
+ * getMatrixSize() recibe la entrada del usuario correspondiente
+ * al tamano de matriz y verifica que se encuentre dentro del
+ * rango permitido (1-10)
+ * @return El tamano de la matriz que se va a utilizar
+ */
 
 int getMatrixSize() {
     int tamanoUsuario = 0;
@@ -20,6 +38,10 @@ int getMatrixSize() {
     return tamanoUsuario;
 }
 
+/*
+ * randomMatrix() llena una matriz de numeros aleatorios binarios y la imprime
+ * @param matrix[][tamano] Matriz a llenar
+ */
 
 void randomMatrix(int matrix[][tamano]) {
     for (int i = 0; i < tamano; i++) {
@@ -37,6 +59,13 @@ void randomMatrix(int matrix[][tamano]) {
     }
 }
 
+/*
+ * minimo() determina el numero minimo entre tres parametros enteros
+ * @param n1 Primer numero
+ * @param n2 Segundo numero
+ * @param n3 Tercer numero
+ * @return Numero minimo entre los tres
+ */
 
 int minimo(int n1, int n2, int n3){
     int min = n1;
@@ -52,6 +81,11 @@ int minimo(int n1, int n2, int n3){
     return min;
 }
 
+/*
+ * findLargestSquare() determina el mayor cuadrado de 1s que se puede formar en la matriz
+ * @param matrix[][tamano] Matriz cuadrada utilizada
+ * @return largestSquareSize Mayor lado posible del cuadrado de 1s
+ */
 
 int findLargestSquare(int matrix[][tamano]) {
     int largestSquareSize = 0;
@@ -72,10 +106,19 @@ int findLargestSquare(int matrix[][tamano]) {
         }
     }
 
+    // printf("\n");
+    // for (int i = 0; i < tamano; i++) {
+    //     for (int j = 0; j < tamano; j++) {
+    //         printf("%d ", matrix[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+
     return largestSquareSize;
 }
 
 int main() {
+    // Tiempo como seed para la generacion de numeros aleatorios
     srand(time(NULL));
 
     tamano = getMatrixSize();
