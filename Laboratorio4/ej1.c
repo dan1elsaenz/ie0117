@@ -41,7 +41,7 @@ int busquedaBinaria (int array[], int objetivo, int limiteSuperior) {
     int valorMedio = 0; // Valor medio del rango analizado en cada repeticion
     int limiteInferior = 0; // Limite inferior de analisis para cada repeticion
     
-    while (limiteInferior < limiteSuperior) {
+    while (limiteInferior <= limiteSuperior) {
         valorMedio = limiteInferior + (limiteSuperior - limiteInferior)/2;
 
         if (array[valorMedio] == objetivo) {
@@ -76,7 +76,7 @@ int busquedaBinaria (int array[], int objetivo, int limiteSuperior) {
 int busquedaBinariaRecursiva(int array[], int objetivo, int limiteInferior, int limiteSuperior) {
     int valorMedio = 0;
     
-    if (limiteInferior < limiteSuperior) {
+    if (limiteInferior <= limiteSuperior) {
         valorMedio = limiteInferior + (limiteSuperior - limiteInferior)/2;
 
         if (array[valorMedio] == objetivo) {
