@@ -160,3 +160,73 @@ void eliminarElemento(Node** head, int dataEliminar) {
     free(actual);
     actual = NULL;
 }
+
+void buscarElemento(Node* head, int dataBuscar) {
+
+    if (head == NULL) {
+        printf("Error: Nodo head no definido\n");
+        return;
+    }
+
+    Node* actual = head;
+    int contador = 0;
+    while (actual != NULL) {
+        if (actual->data == dataBuscar) {
+            printf("Dato %d encontrado en el nodo %d\n", dataBuscar, contador);
+            return;
+        }
+        
+        actual = actual->next;
+        contador++;
+    }
+
+    printf("No se encontro %d en la lista enlazada\n", dataBuscar);
+}
+
+void recorrerListaAdelante(Node* head) {
+    if (head == NULL) {
+        printf("Error: Nodo head no definido\n");
+        return;
+    }
+
+
+    Node* actual = head;
+    while (actual != NULL) {
+        printf("%d - ", actual->data);
+        actual = actual->next;
+    }
+
+    printf("NULL\n");
+}
+
+
+void recorrerListaAtras(Node* head) {
+    if (head == NULL) {
+        printf("Error: Nodo head no definido\n");
+        return;
+    }
+    
+    Node* final = head;
+
+    while (final->next != NULL) {
+        final = final->next;
+    }
+
+    while (final != NULL) {
+        printf("%d - ", final->data);
+        final = final->prev;
+    }
+    printf("NULL\n");
+
+}
+
+void freeList(Node* head) {
+    Node* actual = head;
+    Node* next = NULL;
+
+    while (actual != NULL) {
+        next = actual->next;
+        free(actual);
+        actual = next;
+    }
+}
