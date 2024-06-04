@@ -40,3 +40,26 @@ void insertarInicio(Node **head, int data) {
     (*head)->prev = nodoInicial;
     *head = nodoInicial;
 }
+
+void insertarFinal(Node* head, int data) {
+    
+    if (head == NULL) {
+        printf("Error: Nodo head no definido\n");
+        return;
+    }
+
+    Node* nodoFinal = crearNodo(data);
+
+    if (nodoFinal == NULL) {
+        printf("Error: No se pudo reservar memoria para el nuevo nodo\n");
+        return;
+    }
+
+    Node* actual = head;
+    while (actual->next != NULL) {
+        actual = actual->next;
+    }
+
+    actual->next = nodoFinal;
+    nodoFinal->prev = actual;
+}
