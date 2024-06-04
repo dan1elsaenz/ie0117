@@ -4,8 +4,10 @@
 
 
 int main() {
+    // Declaracion del nodo head
     Node* head = NULL;
 
+    // Creacion inicial de una lista del 1-6
     insertarInicio(&head, 1);
     insertarFinal(head, 2);
     insertarFinal(head, 3);
@@ -17,13 +19,14 @@ int main() {
     recorrerListaAdelante(head);
     printf("\n");
 
-    insertarIndex(&head, 0, 0);
-    insertarIndex(&head, 7, 3);
+    insertarIndex(&head, 0, 0); // Agregar nodo al inicio
+    insertarIndex(&head, 7, 3); // Agregar nodo al final
 
     printf("Lista despues del insert:\n");
     recorrerListaAdelante(head);
     printf("\n");
 
+    // Eliminar nodos basado en su contenido
     eliminarElemento(&head, 5);
 
     eliminarElemento(&head, 6);
@@ -39,7 +42,7 @@ int main() {
     printf("Recorrido hacia atras de la lista:\n");
     recorrerListaAtras(head);
 
-    freeList(head);
+    freeList(head); // Liberacion de la memoria reservada para cada nodo
 
     return 0;
 }
