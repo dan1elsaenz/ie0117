@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -O0
+CFLAGS = -Wall
 
 SRCS = double_list.c main.c
 OBJS = $(SRCS:.c=.o)
