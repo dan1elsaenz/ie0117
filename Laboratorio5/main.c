@@ -2,7 +2,12 @@
 #include <stdlib.h>
 #include "double_list.h"
 
-
+/*
+ * main() corresponde al punto de entrada del proyecto
+ * Se demuestra el funcionamiento correcto de las listas doblemente enlazadas
+ * 
+ * @return 0 si no ocurrieron errores en ejecucion
+ */
 int main() {
     // Declaracion del nodo head
     Node* head = NULL;
