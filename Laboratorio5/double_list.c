@@ -2,7 +2,14 @@
 #include <stdlib.h>
 #include "double_list.h"
 
-// Evitar repeticion del codigo
+/*
+ * crearNodo() reserva la memoria dinamica para crear un nodo
+ * nuevo, inicializa los nodos previo y siguiente en NULL y le
+ * asigna el data correspondiente
+ * 
+ * @param1 int data: Dato entero que guarda el nodo
+ * @return nodoNuevo: Nodo creado 
+ */
 Node* crearNodo(int data) {
     Node* nodoNuevo = (Node *)malloc(sizeof(Node));
 
@@ -18,6 +25,12 @@ Node* crearNodo(int data) {
     return nodoNuevo;
 }
 
+/*
+ * insertarInicio() agrega un nuevo nodo al inicio de la lista
+ * 
+ * @param1 Node** head: Puntero a la direccion del puntero head de la lista
+ * @param2 int data: Dato entero para agregar al inicio de la lista
+ */
 void insertarInicio(Node **head, int data) {
     if (head == NULL) {
         printf("Error: Puntero a nodo head invalido\n");
@@ -41,6 +54,13 @@ void insertarInicio(Node **head, int data) {
     *head = nodoInicial;
 }
 
+/*
+ * insertarFinal() agrega un nodo seguido del ultimo elemento de la lista
+ *
+ * @param1 Node* head: Direccion del nodo head para recorrer la lista
+ * @param2 int data: Dato entero para agregarle al nodo creado
+ */
+
 void insertarFinal(Node* head, int data) {
     
     if (head == NULL) {
@@ -63,6 +83,14 @@ void insertarFinal(Node* head, int data) {
     actual->next = nodoFinal;
     nodoFinal->prev = actual;
 }
+
+/*
+ * insertarIndex() agrega un nodo en un indice indicado en la lista
+ *
+ * @param1 Node** head: Puntero a la direccion del nodo head
+ * @param2 int data: Entero para agregarle al nuevo nodo
+ * @param3 int posicion: Indice de insercion del nuevo nodo
+ */
 
 void insertarIndex(Node** head, int data, int posicion) {
     if (head == NULL) {
@@ -118,6 +146,13 @@ void insertarIndex(Node** head, int data, int posicion) {
 
 }
 
+/*
+ * eliminarElemento() quita un nodo de la lista basado en el contenido de su data
+ * 
+ * @param1 Node** head: Direccion al puntero de head
+ * @param2 int dataEliminar: Dato entero para eliminar al nodo que lo contiene
+ */
+
 void eliminarElemento(Node** head, int dataEliminar) {
     
     if (head == NULL) {
@@ -161,6 +196,13 @@ void eliminarElemento(Node** head, int dataEliminar) {
     actual = NULL;
 }
 
+/*
+ * buscarElemento() busca un nodo basado en el contenido de su variable data
+ * 
+ * @param1 Node* head: Puntero al nodo head
+ * @param2 int dataBuscar: Entero a buscar entre el contenid de los nodos
+ */
+
 void buscarElemento(Node* head, int dataBuscar) {
 
     if (head == NULL) {
@@ -183,6 +225,12 @@ void buscarElemento(Node* head, int dataBuscar) {
     printf("No se encontro %d en la lista enlazada\n", dataBuscar);
 }
 
+/*
+ * recorrerListaAdelante() imprime el contenido de cada uno de
+ * los nodos en orden de inicio a fin
+ * 
+ * @param1 Node* head: Puntero al nodo head de la lista
+ */
 void recorrerListaAdelante(Node* head) {
     if (head == NULL) {
         printf("Error: Nodo head no definido\n");
@@ -199,7 +247,12 @@ void recorrerListaAdelante(Node* head) {
     printf("NULL\n");
 }
 
-
+/*
+ * recorrerListaAtras() imprime el contenido de cada uno de
+ * los nodos en orden inverso de fin a inicio
+ * 
+ * @param1 Node* head: Puntero al nodo head de la lista
+ */
 void recorrerListaAtras(Node* head) {
     if (head == NULL) {
         printf("Error: Nodo head no definido\n");
@@ -220,6 +273,12 @@ void recorrerListaAtras(Node* head) {
 
 }
 
+/*
+ * freeList() libera la memoria reservada de cada uno de los nodos
+ * utilizados en la lista
+ * 
+ * @param1: Node* head: Puntero al nodo head de la lista
+ */
 void freeList(Node* head) {
     Node* actual = head;
     Node* next = NULL;
