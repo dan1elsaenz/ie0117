@@ -60,7 +60,6 @@ void insertarInicio(Node **head, int data) {
  * @param1 Node* head: Direccion del nodo head para recorrer la lista
  * @param2 int data: Dato entero para agregarle al nodo creado
  */
-
 void insertarFinal(Node* head, int data) {
     
     if (head == NULL) {
@@ -91,7 +90,6 @@ void insertarFinal(Node* head, int data) {
  * @param2 int data: Entero para agregarle al nuevo nodo
  * @param3 int posicion: Indice de insercion del nuevo nodo
  */
-
 void insertarIndex(Node** head, int data, int posicion) {
     if (head == NULL) {
         printf("Error: Puntero a nodo head invalido\n");
@@ -152,7 +150,6 @@ void insertarIndex(Node** head, int data, int posicion) {
  * @param1 Node** head: Direccion al puntero de head
  * @param2 int dataEliminar: Dato entero para eliminar al nodo que lo contiene
  */
-
 void eliminarElemento(Node** head, int dataEliminar) {
     
     if (head == NULL) {
@@ -202,7 +199,6 @@ void eliminarElemento(Node** head, int dataEliminar) {
  * @param1 Node* head: Puntero al nodo head
  * @param2 int dataBuscar: Entero a buscar entre el contenid de los nodos
  */
-
 void buscarElemento(Node* head, int dataBuscar) {
 
     if (head == NULL) {
