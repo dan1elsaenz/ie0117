@@ -17,7 +17,7 @@ Node* crearNodo(int data) {
     return nodoNuevo;
 }
 
-Stack* crearStack() {
+Stack* initStack() {
     Stack* stack = (Stack *)malloc(sizeof(Stack));
     
     if (stack == NULL) {
@@ -35,32 +35,52 @@ void push(Stack* stack, int data) {
         return;
     }
 
-    Node* nodoTop = crearNodo(data);
+    Node* nodoNuevo = crearNodo(data);
     
-    if (nodoTop == NULL) {
+    if (nodoNuevo == NULL) {
+        printf("Error: No se pudo reservar memoria para crear el nodo\n");
         return;
     }
 
     if (stack->top == NULL) {
-        stack->top = nodoTop;
+        stack->top = nodoNuevo;
     }
 
-    nodoTop->next = stack->top;
-    stack->top = nodoTop;
+    nodoNuevo->next = stack->top;
+    stack->top = nodoNuevo;
 
 }
 
 
-void pop() {
+void pop(Stack* stack) {
+    if (stack == NULL) {
+        printf("Error: Direccion de memoria de stack indefinido\n");
+        return;
+    }
+    
+    if (stack->top == NULL) {
+        printf("Error: Stack vacio\n");
+        return;
+    }
+
+    Node* nodoEliminado = stack->top;
+    int dataEliminado = stack->top->data;
+    stack->top = stack->top->next;
+    free(nodoEliminado);
+
+    return dataEliminado;
+}
+
+void top(Stack* stack) {
 
 }
 
-void top() {
+void isEmpty(Stack* stack) {
+    if (stack->top == NULL) {
+        return 1;
+    }
 
-}
-
-void isEmpty() {
-
+    return 0;
 }
 
 void freeList() {
