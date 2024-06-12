@@ -72,10 +72,25 @@ void pop(Stack* stack) {
 }
 
 void top(Stack* stack) {
+    if (stack == NULL) {
+        printf("Error: Direccion de stack indefinida\n");
+        return;
+    }
 
+    if (stack->top == NULL) {
+        printf("Stack vacio\n");
+        return;
+    }
+
+    return stack->top->data;
 }
 
 void isEmpty(Stack* stack) {
+    if (stack == NULL) {
+        printf("Error: Direccion de stack indefinida\n");
+        return;
+    }
+
     if (stack->top == NULL) {
         return 1;
     }
