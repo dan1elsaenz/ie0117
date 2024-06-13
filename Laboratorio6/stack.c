@@ -44,23 +44,25 @@ void push(Stack* stack, int data) {
 
     if (stack->top == NULL) {
         stack->top = nodoNuevo;
+        return;
     }
 
+    nodoNuevo->data = data;
     nodoNuevo->next = stack->top;
     stack->top = nodoNuevo;
 
 }
 
 
-void pop(Stack* stack) {
+int pop(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de memoria de stack indefinido\n");
-        return;
+        return -1;
     }
     
     if (stack->top == NULL) {
         printf("Error: Stack vacio\n");
-        return;
+        return -1;
     }
 
     Node* nodoEliminado = stack->top;
@@ -71,24 +73,24 @@ void pop(Stack* stack) {
     return dataEliminado;
 }
 
-void top(Stack* stack) {
+int top(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de stack indefinida\n");
-        return;
+        return -1;
     }
 
     if (stack->top == NULL) {
         printf("Stack vacio\n");
-        return;
+        return -1;
     }
 
     return stack->top->data;
 }
 
-void isEmpty(Stack* stack) {
+int isEmpty(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de stack indefinida\n");
-        return;
+        return -1;
     }
 
     if (stack->top == NULL) {
@@ -98,6 +100,30 @@ void isEmpty(Stack* stack) {
     return 0;
 }
 
-void freeList() {
-    
+void printStack(Stack* stack) {
+    if (stack == NULL) {
+        printf("Error: Direccion de stack indefinida\n");
+        return;
+    }
+
+    Node* actual = stack->top;
+    while (actual != NULL) {
+        printf("%d -> ", actual->data);
+        actual = actual->next;
+    }
+    printf("NULL\n");
+
+}
+
+void freeStack(Stack* stack) {
+    Node* actual = stack->top;
+    Node* next = NULL;
+
+    while (actual != NULL) {
+        next = actual->next;
+        free(actual);
+        actual = next;
+    }
+
+    free(stack);
 }
