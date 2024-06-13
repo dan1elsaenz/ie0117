@@ -65,7 +65,7 @@ void push(Stack* stack, int data) {
         return;
     }
 
-    if (stack->top == NULL) {
+    if (isEmpty(stack)) {
         stack->top = nodoNuevo;
         return;
     }
@@ -90,7 +90,7 @@ int pop(Stack* stack) {
         return -1;
     }
     
-    if (stack->top == NULL) {
+    if (isEmpty(stack)) {
         printf("Error: Stack vacio\n");
         return -1;
     }
@@ -120,7 +120,7 @@ int top(Stack* stack) {
         return -1;
     }
 
-    if (stack->top == NULL) {
+    if (isEmpty(stack)) {
         printf("Stack vacio\n");
         return -1;
     }
