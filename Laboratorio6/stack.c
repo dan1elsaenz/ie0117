@@ -70,6 +70,7 @@ void push(Stack* stack, int data) {
         return;
     }
 
+    // Cambio del nodo top al nuevo nodo
     nodoNuevo->data = data;
     nodoNuevo->next = stack->top;
     stack->top = nodoNuevo;
@@ -94,10 +95,14 @@ int pop(Stack* stack) {
         return -1;
     }
 
+    // Actualizar nodos y contenido
     Node* nodoEliminado = stack->top;
     int dataEliminado = stack->top->data;
     stack->top = stack->top->next;
+
+    // Liberar memoria
     free(nodoEliminado);
+    nodoEliminado = NULL;
 
     return dataEliminado;
 }
