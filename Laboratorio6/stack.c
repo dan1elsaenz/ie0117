@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include "stack.h"
 
+
+/*
+ * crearNodo() reserva memoria del heap para crear un struct Node,
+ * inicializa data con el argumento de la funcion y next a NULL
+ * 
+ * @param1 int data: Data a agregar al nodo
+ * @return Node* nodoNuevo: Puntero al nodo creado
+ */
 Node* crearNodo(int data) {
     Node* nodoNuevo = (Node *)malloc(sizeof(Node));
 
@@ -11,12 +19,20 @@ Node* crearNodo(int data) {
         return NULL;
     }
 
+    // Asignacion de las propiedades del struct predeterminadas
     nodoNuevo->data = data;
     nodoNuevo->next = NULL;
 
     return nodoNuevo;
 }
 
+
+/*
+ * initStack() inicializa la estructura de datos Stack con memoria dinamica,
+ * declara top en NULL inicialmente
+ * 
+ * @return Stack* stack: Stack creado
+ */
 Stack* initStack() {
     Stack* stack = (Stack *)malloc(sizeof(Stack));
     
@@ -29,6 +45,13 @@ Stack* initStack() {
     return stack;
 }
 
+
+/*
+ * push() agrega un nuevo nodo en la posicion top del stack
+ * 
+ * @param1 Stack* stack: Puntero al struct Stack
+ * @param2 int data: Data que se desea agregar al nodo nuevo
+ */
 void push(Stack* stack, int data) {
     if (stack == NULL) {
         printf("Error: Direccion de memoria de stack indefinido\n");
@@ -50,10 +73,16 @@ void push(Stack* stack, int data) {
     nodoNuevo->data = data;
     nodoNuevo->next = stack->top;
     stack->top = nodoNuevo;
-
 }
 
 
+/*
+ * pop() elimina el nodo ubicado en el top del stack
+ * 
+ * @param1 Stack* stack: Puntero al stack utilizado
+ * @return int datoEliminado: Data eliminada del nodo top del stack
+ *         / -1 en caso de error
+ */
 int pop(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de memoria de stack indefinido\n");
@@ -73,6 +102,13 @@ int pop(Stack* stack) {
     return dataEliminado;
 }
 
+
+/*
+ * top() devuelve el data del nodo top del stack
+ *
+ * @param1 Stack* stack: Puntero al stack empleado
+ * @return int data: Data del nodo top / -1 en caso de error
+ */
 int top(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de stack indefinida\n");
@@ -87,19 +123,34 @@ int top(Stack* stack) {
     return stack->top->data;
 }
 
+
+/*
+ * isEmpty() revisa si el stack esta vacio
+ * 
+ * @param1 Stack* stack: Puntero al stack
+ * @return int estaVacio: Vacio: 1 | Error: -1 | +1 nodos: 0
+ */
 int isEmpty(Stack* stack) {
+    int estaVacio = 0;
+
     if (stack == NULL) {
         printf("Error: Direccion de stack indefinida\n");
-        return -1;
+        estaVacio = -1;
     }
 
     if (stack->top == NULL) {
-        return 1;
+        estaVacio = 1;
     }
 
-    return 0;
+    return estaVacio;
 }
 
+
+/*
+ * printStack() imprime el stack completo nodo por nodo
+ * 
+ * @param1 Stack* stack: Stack empleado
+ */
 void printStack(Stack* stack) {
     if (stack == NULL) {
         printf("Error: Direccion de stack indefinida\n");
@@ -112,9 +163,15 @@ void printStack(Stack* stack) {
         actual = actual->next;
     }
     printf("NULL\n");
-
 }
 
+
+/*
+ * freeStack() libera la memoria reservada para formar el stack
+ * por medio de free()
+ * 
+ * @param1 Stack* stack: Stack utilizado
+ */
 void freeStack(Stack* stack) {
     Node* actual = stack->top;
     Node* next = NULL;
