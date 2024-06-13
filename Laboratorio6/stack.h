@@ -23,6 +23,8 @@ int top(Stack* stack);
 
 int isEmpty(Stack* stack);
 
+void printStack(Stack* stack);
+
 void freeStack(Stack* stack);
 
 #endif /* STACK_H */
