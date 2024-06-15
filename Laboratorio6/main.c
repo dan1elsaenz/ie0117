@@ -41,7 +41,9 @@ int main() {
 
     int poppedData = pop(stack);
 
-    printf("Data extraido: %d\n", poppedData);
+    if (poppedData != -1) {
+        printf("Data extraido: %d\n", poppedData);
+    }
 
     printStack(stack);
 
