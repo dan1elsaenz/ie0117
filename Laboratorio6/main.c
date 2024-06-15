@@ -6,6 +6,8 @@ int main() {
 
     int estaVacio = 0;
 
+    int contenidoTop = 0;
+
     Stack* stack = initStack(&stack_running);
 
     if (!stack_running) {
@@ -34,6 +36,12 @@ int main() {
     push(stack, 3);
 
     printStack(stack);
+
+    contenidoTop = top(stack);
+
+    if (contenidoTop != -1) {
+        printf("El contenido en el nodo top actual es: %d\n", contenidoTop);
+    }
 
     push(stack, 4);
 
