@@ -5,8 +5,8 @@ int main() {
     int stack_running = 0;
 
     int estaVacio = 0;
-    Stack* stack = NULL;
-    //Stack* stack = initStack(&stack_running);
+
+    Stack* stack = initStack(&stack_running);
 
     if (!stack_running) {
         printf("Stack no esta activo\n");
