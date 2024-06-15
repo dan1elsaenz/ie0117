@@ -92,7 +92,7 @@ int pop(Stack* stack) {
     }
     
     if (isEmpty(stack)) {
-        printf("Error: Stack vacio\n");
+        printf("Error: No se pudo extraer nada porque el stack esta vacio\n");
         return -1;
     }
 
