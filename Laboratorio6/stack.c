@@ -65,13 +65,14 @@ void push(Stack* stack, int data) {
         return;
     }
 
+    nodoNuevo->data = data;
+
     if (isEmpty(stack)) {
         stack->top = nodoNuevo;
         return;
     }
 
     // Cambio del nodo top al nuevo nodo
-    nodoNuevo->data = data;
     nodoNuevo->next = stack->top;
     stack->top = nodoNuevo;
 }
