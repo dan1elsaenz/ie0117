@@ -2,8 +2,16 @@
 #include <stdio.h>
 
 int main() {
+    int stack_running = 0;
+
     int estaVacio = 0;
-    Stack* stack = initStack();
+    Stack* stack = NULL;
+    //Stack* stack = initStack(&stack_running);
+
+    if (!stack_running) {
+        printf("Stack no esta activo\n");
+        return 1;
+    }
 
     estaVacio = isEmpty(stack);
 

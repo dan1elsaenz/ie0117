@@ -33,7 +33,7 @@ Node* crearNodo(int data) {
  * 
  * @return Stack* stack: Stack creado
  */
-Stack* initStack() {
+Stack* initStack(int* stack_running) {
     Stack* stack = (Stack *)malloc(sizeof(Stack));
     
     if (stack == NULL) {
@@ -41,6 +41,7 @@ Stack* initStack() {
         return NULL;
     }
 
+    *stack_running = 1;
     stack->top = NULL;
     return stack;
 }

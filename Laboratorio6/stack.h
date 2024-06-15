@@ -34,9 +34,12 @@ Node* crearNodo(int data);
  * initStack() inicializa la estructura de datos Stack con memoria dinamica,
  * declara top en NULL inicialmente
  * 
+ * @param1 int* stack_running: Condicion de que se haya reservado
+ * correctamente la memoria del heap y el stack este activo
+ * 
  * @return Stack* stack: Stack creado
  */
-Stack* initStack();
+Stack* initStack(int* stack_running);
 
 
 /*
