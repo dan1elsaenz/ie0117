@@ -62,7 +62,6 @@ void push(Stack* stack, int data) {
     Node* nodoNuevo = crearNodo(data);
     
     if (nodoNuevo == NULL) {
-        printf("Error: No se pudo reservar memoria para crear el nodo\n");
         return;
     }
 
