@@ -8,6 +8,8 @@ int main() {
 
     int contenidoTop = 0;
 
+    int poppedData = 0;
+
     Stack* stack = initStack(&stack_running);
 
     if (!stack_running) {
@@ -47,7 +49,7 @@ int main() {
 
     printStack(stack);
 
-    int poppedData = pop(stack);
+    poppedData = pop(stack);
 
     if (poppedData != -1) {
         printf("Data extraido: %d\n", poppedData);
