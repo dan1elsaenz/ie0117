@@ -122,7 +122,7 @@ int top(Stack* stack) {
     }
 
     if (isEmpty(stack)) {
-        printf("Stack vacio\n");
+        printf("Stack vacio. No hay contenido para extraer\n");
         return -1;
     }
 
