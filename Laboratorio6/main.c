@@ -2,13 +2,12 @@
 #include <stdio.h>
 
 int main() {
+
     int stack_running = 0;
-
     int estaVacio = 0;
-
     int contenidoTop = 0;
-
     int poppedData = 0;
+
 
     Stack* stack = initStack(&stack_running);
 
@@ -25,7 +24,7 @@ int main() {
     else if (estaVacio == 1) {
         printf("Stack vacio\n");
     }
-    
+
 
     push(stack, 1);
 
